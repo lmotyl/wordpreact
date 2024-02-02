@@ -1,0 +1,39 @@
+GET http://localhost:18002/wp-json/wp/v2/posts/
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-01T234129.200.json
+
+###
+
+GET http://localhost:18002/wp-json/wp/v2/posts/
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-01T230058.200.json
+
+###
+
+GET http://localhost:18002/wp-json/wp/v2/posts/
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-01T225041.200.html
+
+###
+
+GET http://localhost:18001/wp-json/wp/v2/posts/
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-01T220559.200.html
+
+###
+

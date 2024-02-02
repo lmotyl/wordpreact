@@ -1,0 +1,52 @@
+version: "3.2"
+
+services:
+  database:
+    image: mysql:8.0.36
+    working_dir: /application
+    restart: unless-stopped
+    volumes:
+      - '.:/application'
+    environment:
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_ROOT_PASSWORD=password123
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=password123
+    ports:
+      - '11003:3306'
+    networks:
+      - app-network
+
+  wordpress:
+    image: wordpress:6.4.3-php8.3-fpm-alpine
+    restart: unless-stopped
+    environment:
+      - WORDPRESS_DB_HOST=database:3306
+      - WORDPRESS_DB_USER=myuser
+      - WORDPRESS_DB_PASSWORD=password123
+      - WORDPRESS_DB_NAME=wordpress
+    volumes:
+      - .:/var/www/html
+    networks:
+      - app-network
+
+  nginx:
+    build:
+      context: ./web_server
+      dockerfile: Dockerfile
+      args:
+        react_dir: ${REACT_PROJECT_DIR:-reactapp}
+    restart: unless-stopped
+    ports:
+      - "18001:80"
+      - "18002:81"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - wordpress
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
